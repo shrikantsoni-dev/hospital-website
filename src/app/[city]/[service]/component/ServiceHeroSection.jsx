@@ -7,6 +7,7 @@ import { ENQUIRY_TEMPLATE_ID, PUBLIC_KEY, SERVICE_ID } from "@/constant";
 import emailjs from "@emailjs/browser";
 import { PhoneIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { fireInquiryWebhook } from "@/lib/fireInquiryWebhook";
 
 export default function ServiceHeroSection({ city, service }) {
   const [loading, setLoading] = useState(false);
@@ -44,6 +45,14 @@ export default function ServiceHeroSection({ city, service }) {
       setIsSuccess(true);
       setSubmitted(true);
       setMessage("Request submitted! We will call you shortly.");
+
+      fireInquiryWebhook({
+        name,
+        mobile: phone,
+        service: service?.name,
+        city: city?.name,
+        source: "service_hero_form",
+      });
 
       setName("");
       setPhone("");

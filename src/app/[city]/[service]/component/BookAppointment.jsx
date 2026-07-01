@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { PUBLIC_KEY, SERVICE_ID, TEMPLATE_ID } from "@/constant";
 import { useRouter } from "next/navigation";
+import { fireInquiryWebhook } from "@/lib/fireInquiryWebhook";
 
 const TIME_SLOTS = [
   "10:00 AM – 12:00 PM",
@@ -118,6 +119,16 @@ export default function BookAppointment({ city, areaName }) {
         PUBLIC_KEY
       );
       setStatus("success");
+        fireInquiryWebhook({
+          name: form.name,
+          mobile: form.mobile,
+          email: form.email,
+          timeSlot: form.slot,
+          message: form.message,
+          city: city?.name,
+          area: areaName,
+          source: "area_BookAppointment_form",
+        });
         // GTM dataLayer push
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({

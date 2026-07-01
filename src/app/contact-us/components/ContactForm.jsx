@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import emailjs from "@emailjs/browser";
 import { SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY } from "@/constant";
+import { fireInquiryWebhook } from "@/lib/fireInquiryWebhook";
 
 export default function ContactForm() {
   const router = useRouter();
@@ -50,6 +51,12 @@ export default function ContactForm() {
       )
       .then(() => {
         setLoading(false);
+        fireInquiryWebhook({
+          name: form.name,
+          mobile: form.mobile,
+          email: form.email,
+          source: "Contact Us Form",
+        });
         setForm({ name: "", mobile: "", email: "" });
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({

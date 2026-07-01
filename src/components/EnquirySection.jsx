@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { SERVICE_ID, PUBLIC_KEY, TEMPLATE_ID,  } from "@/constant";
 import { useRouter } from "next/navigation";
+import { fireInquiryWebhook } from "@/lib/fireInquiryWebhook";
 
 export default function EnquirySection() {
     const [open, setOpen] = useState(false);
@@ -41,6 +42,13 @@ const router = useRouter()
             )
             .then(() => {
                 setLoading(false);
+                fireInquiryWebhook({
+                    name: form.name,
+                    mobile: form.mobile,
+                    countryCode: form.countryCode,
+                    email: form.email,
+                    source: "Enquiry Popup",
+                });
                 router.push("/thank-you");
                 setSuccessMsg("Thank you! Our team will call you shortly.");
                 setForm({

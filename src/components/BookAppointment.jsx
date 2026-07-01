@@ -12,6 +12,7 @@ import {
   ENQUIRY_TEMPLATE_ID,
 } from "@/constant";
 import { useRouter } from "next/navigation";
+import { fireInquiryWebhook } from "@/lib/fireInquiryWebhook";
 
 export default function BookAppointment({ service, city }) {
   const [form, setForm] = useState({
@@ -63,6 +64,17 @@ export default function BookAppointment({ service, city }) {
       .then(() => {
         setLoading(false);
         setSuccessMsg("Your appointment request has been sent successfully!");
+
+        fireInquiryWebhook({
+          name: form.name,
+          mobile: form.mobile,
+          email: form.email,
+          timeSlot: form.timeSlot,
+          message: form.message,
+          service: service?.name,
+          city: city?.name,
+          source: "service_BookAppointment_form",
+        });
 
         setForm({
           name: "",

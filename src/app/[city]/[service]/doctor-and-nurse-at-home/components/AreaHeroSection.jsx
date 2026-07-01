@@ -7,6 +7,7 @@ import { areaContent } from "@/data/areaContent";
 import emailjs from "@emailjs/browser";
 import { ENQUIRY_TEMPLATE_ID, PUBLIC_KEY, SERVICE_ID } from "@/constant";
 import { useRouter } from "next/navigation";
+import { fireInquiryWebhook } from "@/lib/fireInquiryWebhook";
 
 export default function AreaHeroSection({ areaName, cityName, citySlug }) {
   const [name, setName] = useState("");
@@ -49,7 +50,15 @@ export default function AreaHeroSection({ areaName, cityName, citySlug }) {
   
       setStatus("success");
       setSubmitted(true);
-  
+
+      fireInquiryWebhook({
+        name: name.trim(),
+        mobile: phone,
+        area: areaName,
+        city: cityName,
+        source: "area_hero_form",
+      });
+
       setName("");
       setPhone("");
   
