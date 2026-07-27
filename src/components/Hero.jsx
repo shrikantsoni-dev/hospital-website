@@ -2,7 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 
 const heroImage = {
-  url: "https://res.cloudinary.com/dux71tf7r/image/upload/v1774797043/Gemini_Generated_Image_v3h8kmv3h8kmv3h8_1_cobimh.png",
+  url: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZG9jdG9yJTIwYW5kJTIwbnVyc2V8ZW58MHx8MHx8fDA%3D",
   alt: "Nurse taking care of elderly patient",
 };
 
