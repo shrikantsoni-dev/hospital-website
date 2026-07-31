@@ -111,38 +111,45 @@ export default function BookAppointment({ city, areaName }) {
       area: areaName || "",
     };
 
-    try {
-      await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        templateParams,
-        PUBLIC_KEY
-      );
-      setStatus("success");
-        fireInquiryWebhook({
-          name: form.name,
-          mobile: form.mobile,
-          email: form.email,
-          timeSlot: form.slot,
-          message: form.message,
-          city: city?.name,
-          area: areaName,
-          source: "area_BookAppointment_form",
-        });
-        // GTM dataLayer push
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "lead_submit",
-          form_name: "area_BookAppointment_form",
-          area: areaName,
-          city: city.name,
-        });
-        // Redirect to thank-you page
-        router.push("/thank-you");
-    } catch (err) {
-      console.error("EmailJS error:", err);
+    // The WhatsApp webhook runs alongside EmailJS, not after it — an EmailJS
+    // outage must not swallow the lead.
+    const whatsapp = fireInquiryWebhook({
+      type: "appointment",
+      name: form.name,
+      mobile: form.mobile,
+      email: form.email,
+      timeSlot: form.slot,
+      message: form.message,
+      city: city?.name,
+      area: areaName,
+      source: "area_BookAppointment_form",
+    });
+
+    const email = emailjs
+      .send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+      .catch((err) => {
+        console.error("EmailJS error:", err);
+        return null;
+      });
+
+    const [whatsappSent, emailResult] = await Promise.all([whatsapp, email]);
+
+    if (!whatsappSent && !emailResult) {
       setStatus("error");
+      return;
     }
+
+    setStatus("success");
+    // GTM dataLayer push
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "lead_submit",
+      form_name: "area_BookAppointment_form",
+      area: areaName,
+      city: city.name,
+    });
+    // Redirect to thank-you page
+    router.push("/thank-you");
   };
 
   const handleChange = (field) => (e) => {

@@ -33,31 +33,45 @@ export default function AreaHeroSection({ areaName, cityName, citySlug }) {
     try {
       setStatus("loading");
   
-      await emailjs.send(
-        SERVICE_ID,
-        ENQUIRY_TEMPLATE_ID,
-        {
-          patient_name: name.trim(),
-          mobile: phone,
-          time: new Date().toLocaleString("en-IN", {
-            dateStyle: "medium",
-            timeStyle: "short",
-          }),
-          page: `Doctor & Nurse at Home – ${areaName}, ${cityName}`,
-        },
-        PUBLIC_KEY
-      );
-  
-      setStatus("success");
-      setSubmitted(true);
-
-      fireInquiryWebhook({
+      // The WhatsApp webhook runs alongside EmailJS, not after it — an EmailJS
+      // outage must not swallow the lead.
+      const whatsapp = fireInquiryWebhook({
         name: name.trim(),
         mobile: phone,
         area: areaName,
         city: cityName,
         source: "area_hero_form",
       });
+
+      const email = emailjs
+        .send(
+          SERVICE_ID,
+          ENQUIRY_TEMPLATE_ID,
+          {
+            patient_name: name.trim(),
+            mobile: phone,
+            time: new Date().toLocaleString("en-IN", {
+              dateStyle: "medium",
+              timeStyle: "short",
+            }),
+            page: `Doctor & Nurse at Home – ${areaName}, ${cityName}`,
+          },
+          PUBLIC_KEY
+        )
+        .catch((err) => {
+          console.error("EmailJS error:", err);
+          return null;
+        });
+
+      const [whatsappSent, emailResult] = await Promise.all([whatsapp, email]);
+
+      if (!whatsappSent && !emailResult) {
+        setStatus("error");
+        return;
+      }
+
+      setStatus("success");
+      setSubmitted(true);
 
       setName("");
       setPhone("");

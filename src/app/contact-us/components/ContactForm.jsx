@@ -38,38 +38,50 @@ export default function ContactForm() {
 
     setLoading(true);
 
-    await emailjs
-      .send(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        {
-          patient_name: form.name,
-          mobile: form.mobile,
-          email: form.email,
-        },
-        PUBLIC_KEY
-      )
-      .then(() => {
-        setLoading(false);
-        fireInquiryWebhook({
-          name: form.name,
-          mobile: form.mobile,
-          email: form.email,
-          source: "Contact Us Form",
-        });
-        setForm({ name: "", mobile: "", email: "" });
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "lead_submit",
-          form_name: "Contact Us Form",
-        });
-        router.push("/thank-you");
-      })
-      .catch((err) => {
-        setLoading(false);
-        alert("Failed to send. Please try again.");
-        console.log(err);
-      });
+    // The WhatsApp webhook runs alongside EmailJS, not after it — an EmailJS
+    // outage must not swallow the lead. Both are started before either is
+    // awaited so they overlap.
+    const whatsapp = fireInquiryWebhook({
+      name: form.name,
+      mobile: form.mobile,
+      email: form.email,
+      source: "Contact Us Form",
+    });
+
+    const email = emailjs.send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      {
+        patient_name: form.name,
+        mobile: form.mobile,
+        email: form.email,
+      },
+      PUBLIC_KEY
+    );
+
+    const [whatsappSent, emailResult] = await Promise.all([
+      whatsapp,
+      email.catch((err) => {
+        console.error("EmailJS error:", err);
+        return null;
+      }),
+    ]);
+
+    setLoading(false);
+
+    // Only a total failure is worth showing the visitor an error for.
+    if (!whatsappSent && !emailResult) {
+      alert("Failed to send. Please try again.");
+      return;
+    }
+
+    setForm({ name: "", mobile: "", email: "" });
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "lead_submit",
+      form_name: "Contact Us Form",
+    });
+    router.push("/thank-you");
   };
 
   return (

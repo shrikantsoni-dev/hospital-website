@@ -24,12 +24,22 @@ const router = useRouter()
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         setSuccessMsg("");
 
-        emailjs
+        // The WhatsApp webhook runs alongside EmailJS, not after it — an
+        // EmailJS outage must not swallow the lead.
+        const whatsapp = fireInquiryWebhook({
+            name: form.name,
+            mobile: form.mobile,
+            countryCode: form.countryCode,
+            email: form.email,
+            source: "Enquiry Popup",
+        });
+
+        const email = emailjs
             .send(
                 SERVICE_ID,
                 TEMPLATE_ID,
@@ -40,32 +50,28 @@ const router = useRouter()
                 },
                 PUBLIC_KEY
             )
-            .then(() => {
-                setLoading(false);
-                fireInquiryWebhook({
-                    name: form.name,
-                    mobile: form.mobile,
-                    countryCode: form.countryCode,
-                    email: form.email,
-                    source: "Enquiry Popup",
-                });
-                router.push("/thank-you");
-                setSuccessMsg("Thank you! Our team will call you shortly.");
-                setForm({
-                    name: "",
-                    countryCode: "+91",
-                    mobile: "",
-                    email: "",
-                });
-
-                // agar chaaho to 1–2 sec baad modal close bhi kar sakte ho
-                // setTimeout(() => setOpen(false), 1500);
-            })
             .catch((err) => {
-                console.log(err);
-                setLoading(false);
-                alert("Failed to send enquiry. Please try again.");
+                console.error("EmailJS error:", err);
+                return null;
             });
+
+        const [whatsappSent, emailResult] = await Promise.all([whatsapp, email]);
+
+        setLoading(false);
+
+        if (!whatsappSent && !emailResult) {
+            alert("Failed to send enquiry. Please try again.");
+            return;
+        }
+
+        setSuccessMsg("Thank you! Our team will call you shortly.");
+        setForm({
+            name: "",
+            countryCode: "+91",
+            mobile: "",
+            email: "",
+        });
+        router.push("/thank-you");
     };
 
     return (

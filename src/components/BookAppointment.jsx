@@ -42,64 +42,74 @@ export default function BookAppointment({ service, city }) {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setSuccessMsg("");
 
+    // The WhatsApp webhook runs alongside EmailJS, not after it — an EmailJS
+    // outage must not swallow the lead.
+    const whatsapp = fireInquiryWebhook({
+      type: "appointment",
+      name: form.name,
+      mobile: form.mobile,
+      email: form.email,
+      timeSlot: form.timeSlot,
+      message: form.message,
+      service: service?.name,
+      city: city?.name,
+      source: "service_BookAppointment_form",
+    });
+
     // Send data on email Appoitment data
-    emailjs
-      .send(
-        SERVICE_ID,
-        ENQUIRY_TEMPLATE_ID,
-        {
-          patient_name: form.name,
-          mobile: form.mobile,
-          email: form.email,
-          time_slot: form.timeSlot,
-          message: form.message,
-        },
-        PUBLIC_KEY
-      )
-      .then(() => {
-        setLoading(false);
-        setSuccessMsg("Your appointment request has been sent successfully!");
+    const email = emailjs.send(
+      SERVICE_ID,
+      ENQUIRY_TEMPLATE_ID,
+      {
+        patient_name: form.name,
+        mobile: form.mobile,
+        email: form.email,
+        time_slot: form.timeSlot,
+        message: form.message,
+      },
+      PUBLIC_KEY
+    );
 
-        fireInquiryWebhook({
-          name: form.name,
-          mobile: form.mobile,
-          email: form.email,
-          timeSlot: form.timeSlot,
-          message: form.message,
-          service: service?.name,
-          city: city?.name,
-          source: "service_BookAppointment_form",
-        });
+    const [whatsappSent, emailResult] = await Promise.all([
+      whatsapp,
+      email.catch((err) => {
+        console.error("EmailJS error:", err);
+        return null;
+      }),
+    ]);
 
-        setForm({
-          name: "",
-          mobile: "",
-          email: "",
-          timeSlot: "08:00 - 10:00 AM",
-          message: "",
-        });
+    setLoading(false);
 
-        // GTM dataLayer push
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "lead_submit",
-          form_name: "service_BookAppointment_form",
-          service: service.name,
-          city: city.name,
-        });
-        // Redirect To thank-you page
-        router.push("/thank-you");
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-        alert("Failed to send appointment request. Please try again.");
-      });
+    if (!whatsappSent && !emailResult) {
+      alert("Failed to send appointment request. Please try again.");
+      return;
+    }
+
+    setSuccessMsg("Your appointment request has been sent successfully!");
+
+    setForm({
+      name: "",
+      mobile: "",
+      email: "",
+      timeSlot: "08:00 - 10:00 AM",
+      message: "",
+    });
+
+    // GTM dataLayer push
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "lead_submit",
+      form_name: "service_BookAppointment_form",
+      service: service.name,
+      city: city.name,
+    });
+    // Redirect To thank-you page
+    router.push("/thank-you");
   };
 
   return (

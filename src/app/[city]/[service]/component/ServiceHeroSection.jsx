@@ -31,28 +31,43 @@ export default function ServiceHeroSection({ city, service }) {
       setLoading(true);
       setMessage("");
 
-      await emailjs.send(
-        SERVICE_ID,
-        ENQUIRY_TEMPLATE_ID,
-        {
-          patient_name: name,
-          mobile: phone,
-          time: new Date().toLocaleString(),
-        },
-        PUBLIC_KEY
-      );
-
-      setIsSuccess(true);
-      setSubmitted(true);
-      setMessage("Request submitted! We will call you shortly.");
-
-      fireInquiryWebhook({
+      // The WhatsApp webhook runs alongside EmailJS, not after it — an EmailJS
+      // outage must not swallow the lead.
+      const whatsapp = fireInquiryWebhook({
         name,
         mobile: phone,
         service: service?.name,
         city: city?.name,
         source: "service_hero_form",
       });
+
+      const email = emailjs
+        .send(
+          SERVICE_ID,
+          ENQUIRY_TEMPLATE_ID,
+          {
+            patient_name: name,
+            mobile: phone,
+            time: new Date().toLocaleString(),
+          },
+          PUBLIC_KEY
+        )
+        .catch((err) => {
+          console.error("EmailJS error:", err);
+          return null;
+        });
+
+      const [whatsappSent, emailResult] = await Promise.all([whatsapp, email]);
+
+      if (!whatsappSent && !emailResult) {
+        setIsSuccess(false);
+        setMessage("Something went wrong. Please try again.");
+        return;
+      }
+
+      setIsSuccess(true);
+      setSubmitted(true);
+      setMessage("Request submitted! We will call you shortly.");
 
       setName("");
       setPhone("");
@@ -63,7 +78,7 @@ export default function ServiceHeroSection({ city, service }) {
         event: "lead_submit",
         form_name: "service_hero_form",
         service: service.name,
-        city: city.name, 
+        city: city.name,
       });
       router.push("/thank-you");
     } catch (err) {
