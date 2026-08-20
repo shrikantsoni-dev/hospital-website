@@ -43,12 +43,6 @@ const SERVICE_STATS = {
     { icon: <GiStethoscope size={40} />,              number: 20,   suffix: "+", label: "Certified Physiotherapists" },
     { icon: <FaHeartbeat size={40} />,                number: 24,   suffix: "/7", label: "Available" },
   ],
-  "injection-at-home": [
-    { icon: <FaUsers size={40} />,                   number: 6000, suffix: "+", label: "Happy Patients" },
-    { icon: <MdOutlineAccessTimeFilled size={40} />,  number: 15,   suffix: " Mins", label: "ETA at Home" },
-    { icon: <FaUserDoctor size={40} />,               number: 20,   suffix: "+", label: "Certified Doctor & Nurse" },
-    { icon: <FaHeartbeat size={40} />,                number: 24,   suffix: "/7", label: "Available" },
-  ],
   "lab-test-at-home": [
     { icon: <FaUsers size={40} />,                   number: 6000, suffix: "+", label: "Happy Patients" },
     { icon: <MdOutlineAccessTimeFilled size={40} />,  number: 15,   suffix: " Mins", label: "ETA at Home" },

@@ -96,7 +96,7 @@ export async function generateMetadata({ params }) {
   const canonical = `https://quickhomedoctor.com/${citySlug}/${areaSlug}/doctor-and-nurse-at-home`;
 
   const title = `Doctor & Nurse at Home in ${areaName}, ${cityName} | QuickHomeDoctor`;
-  const description = `Book certified MBBS/MD doctor or nurse at home in ${areaName}, ${cityName} in 15–30 min. 24/7 for fever, post-surgery care, injections & lab tests. Starting ₹399. Call now.`;
+  const description = `Book certified MBBS/MD doctor or nurse at home in ${areaName}, ${cityName} in 15–30 min. 24/7 for fever, post-surgery care, wound dressing & lab tests. Starting ₹399. Call now.`;
 
   const keywords = [
     `doctor at home in ${areaName}`,

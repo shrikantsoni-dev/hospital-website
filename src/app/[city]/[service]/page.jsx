@@ -60,6 +60,28 @@ export async function generateMetadata({ params }) {
   };
 }
 
+// Placeholders live in the raw service data so one entry serves all 5 cities.
+// Resolve them once here so visible copy and JSON-LD never leak a literal {city}.
+function resolvePlaceholders(value, city) {
+  if (typeof value === "string") {
+    return value
+      .replaceAll("{city}", city.name)
+      .replaceAll("{trafficNote}", city.trafficNote ?? "city traffic");
+  }
+  if (Array.isArray(value)) {
+    return value.map((item) => resolvePlaceholders(item, city));
+  }
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [
+        key,
+        resolvePlaceholders(item, city),
+      ])
+    );
+  }
+  return value;
+}
+
 // ─── JSON-LD schemas ─────────────────────────────────────────────────────────
 function JsonLd({ city, service }) {
   const url = `https://quickhomedoctor.com/${city.slug}/${service.slug}`;
@@ -162,9 +184,11 @@ export default async function CityServicePage({ params }) {
   const { city: citySlug, service: serviceSlug } = await params;
 
   const city = seoCities.find((c) => c.slug === citySlug);
-  const service = seoServices.find((s) => s.slug === serviceSlug);
+  const rawService = seoServices.find((s) => s.slug === serviceSlug);
 
-  if (!city || !service) notFound();
+  if (!city || !rawService) notFound();
+
+  const service = resolvePlaceholders(rawService, city);
 
   return (
     <main className="min-h-screen bg-white">

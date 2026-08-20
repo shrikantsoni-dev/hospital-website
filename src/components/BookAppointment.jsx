@@ -133,7 +133,7 @@ export default function BookAppointment({ service, city }) {
         <li className=""> No advance payment required</li>
         <li className="">The nurse arrives in {city.avgArrivalTime}</li>
         <li>24/7 Availability</li>
-        <li>Written prescription after every visit</li>
+        <li>Written treatment plan after every visit</li>
         <li>40+ certified Nurses in {city.name}</li>
       </ul>
 
@@ -280,7 +280,7 @@ export default function BookAppointment({ service, city }) {
           </motion.div>
 
           <Link
-            href="https://wa.me/7303771900"
+            href="https://wa.me/917303771900"
             target="_blank"
             className="bg-brand-secondary text-white mt-6 px-8 py-3 rounded-full font-semibold shadow-md transition flex items-center gap-2"
           >

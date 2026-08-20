@@ -1,7 +1,7 @@
 // src/data/seoServices.js
 // Complete SEO-optimised service data for QuickHomeDoctor
-// 11 services — matches services[] slugs exactly
-// Used in: /[city]/[service]/page.jsx → 5 cities × 11 services = 55 static pages
+// 10 services — matches services[] slugs exactly
+// Used in: /[city]/[service]/page.jsx → 5 cities × 10 services = 50 static pages
 
 export const seoServices = [
   // ─────────────────────────────────────────────────────────────────────────
@@ -21,7 +21,7 @@ export const seoServices = [
       "MBBS/MD certified doctors with valid MCI registration",
       "Available 24/7 including weekends and public holidays",
       "Doctor arrives within 15 minutes of booking",
-      "Written prescription provided after every consultation",
+      "Written treatment plan provided after every consultation",
       "Follow-up call within 24 hours included",
       "Affordable fees starting ₹499 — no hidden charges",
     ],
@@ -42,9 +42,9 @@ export const seoServices = [
           "Yes. All our doctors are MBBS or MD qualified, registered with the Medical Council of India, and undergo background verification before joining.",
       },
       {
-        question: "Will I get a prescription after the home visit?",
+        question: "What will I receive after the home visit?",
         answer:
-          "Yes. A proper written or digital prescription is issued after every consultation. You can use it at any pharmacy.",
+          "You receive a written treatment plan with clear medical advice after every consultation, plus a follow-up call within 24 hours.",
       },
       {
         question: "What are the doctor home visit consultation charges?",
@@ -81,8 +81,8 @@ export const seoServices = [
       },
       {
         icon: "file",
-        title: "Written Prescription",
-        desc: "Proper prescription and treatment advice after every visit.",
+        title: "Treatment & Advice",
+        desc: "Clear treatment plan and medical advice after every visit.",
       },
       {
         icon: "phone",
@@ -123,13 +123,13 @@ export const seoServices = [
     shortDesc:
       "Certified RN & APRN nurses for post-surgery care, wound dressing & 24/7 home duty.",
     longDesc:
-      "Skip the hospital rush. QuickHomeDoctor brings a qualified, background-verified nurse at your home in {city} fast, safe, and without the stress of city traffic. Whether you need wound dressing, catheter care, injection administration, post-surgery nursing, bedridden patient care, or a full-time attendant — our licensed RN and APRN nurses are available day, night, and on weekends. Home nursing in {city} just got easier.",
+      "Skip the hospital rush. QuickHomeDoctor brings a qualified, background-verified nurse at your home in {city} fast, safe, and without the stress of city traffic. Whether you need wound dressing, catheter care, post-surgery nursing, vitals monitoring, bedridden patient care, or a full-time attendant — our licensed RN and APRN nurses are available day, night, and on weekends. Home nursing in {city} just got easier.",
     benefits: [
       "Licensed RN and APRN certified nurses",
       "15–30 minute arrival at your home in {city}",
       "Available 24/7 including weekends and holidays",
       "Post-surgery and post-hospitalisation nursing care",
-      "Wound dressing, catheter care, and injection administration",
+      "Wound dressing, catheter care, and vitals monitoring",
       "Specialised elderly, bedridden, and child patient care",
     ],
     faqs: [
@@ -183,8 +183,8 @@ export const seoServices = [
       },
       {
         icon: "users",
-        title: "Written Prescription",
-        desc: "Every visit ends with a proper prescription and follow-up guidance.",
+        title: "Clear Care Notes",
+        desc: "Every visit ends with clear care notes and follow-up guidance.",
       },
       {
         icon: "star",
@@ -207,15 +207,13 @@ export const seoServices = [
     ],
     conditions: [
       "Wound dressing and care",
-      "Injection and IV administration",
       "Post-surgery nursing care",
       "Post-pregnancy care",
       "Catheter care",
       "Bedridden patient care",
       "Vital signs monitoring",
-      "Medication management",
+      "Post-visit care guidance",
       "Elderly care and monitoring",
-      "Bedridden patient care",
     ],
   },
 
@@ -372,7 +370,7 @@ export const seoServices = [
           "Yes. Every technician is trained, certified, and background-verified before providing services.",
       },
       {
-        question: "Do I need a doctor’s prescription?",
+        question: "Do I need a doctor’s referral for X-Ray at home?",
         answer:
           "In most cases, a doctor’s recommendation is preferred, especially for diagnostic purposes.",
       },
@@ -384,7 +382,7 @@ export const seoServices = [
     ],
     howItWorks: [
       "Book X-Ray at Home",
-      "Share Doctor Prescription",
+      "Share Doctor’s Referral",
       "Technician Visits Home with Portable Machine",
       "Digital Report Delivered Online",
     ],
@@ -412,7 +410,7 @@ export const seoServices = [
       },
       {
         icon: "phone",
-        title: "Written Prescription",
+        title: "Standard Reporting",
         desc: "Every X-Ray test is performed using standard equipment with proper reporting.",
       },
     ],
@@ -437,115 +435,7 @@ export const seoServices = [
   },
 
   // ─────────────────────────────────────────────────────────────────────────
-  // 5. INJECTION AT HOME Done
-  // ─────────────────────────────────────────────────────────────────────────
-  {
-    slug: "injection-at-home",
-    name: "Injection at Home",
-    treat: "Injection",
-    keyword: "injection at home",
-    heroDesc:
-      "Skip the hospitals' and medical clinics' rush. Get a certified MD, GP doctor & certified nurse at your home for injection in {city} fast, safe, and without the stress of {trafficNote}.",
-    shortDesc:
-      "Certified MD doctors & RN nurses for safe IV, IM & SC injections at home in {city}.",
-    longDesc:
-      "Skip the hospital and clinic rush. QuickHomeDoctor brings a qualified doctor and certified nurse at your home in {city} for your injection requirements — fast, safe, and without the stress of city traffic. Whether you need IV injections, IM or subcutaneous injections, antibiotic courses, insulin, vitamin injections, or post-surgery prescribed injections — our licensed doctors and nurses handle it all at your home with proper hygiene and sterile equipment. Injection at home in {city} just got easier.",
-    benefits: [
-      "Licensed MD, GP doctors and RN, APRN certified nurses",
-      "15–30 minute arrival at your home in {city}",
-      "Available 24/7 including weekends and holidays",
-      "IV, IM, and subcutaneous injections administered safely",
-      "Antibiotic, insulin, vitamin, and pain relief injections covered",
-      "Written prescription provided after every visit",
-    ],
-    faqs: [
-      {
-        question: "What types of injections can be given at home in {city}?",
-        answer:
-          "IV injections, IM (intramuscular) injections, subcutaneous injections — antibiotics, vitamins, insulin, anti-emetics, pain killers, and other prescribed injectable medicines.",
-      },
-      {
-        question: "Is the injection equipment sterilized and safe?",
-        answer:
-          "Yes. We use only new, single-use, sterile disposable syringes and needles for every patient. All bio-medical waste is safely disposed.",
-      },
-      {
-        question: "Do I need a doctor prescription for injection at home?",
-        answer:
-          "Yes. A valid doctor prescription is required for all injectable medicines. If you do not have one, our doctor can consult and prescribe during the same visit.",
-      },
-      {
-        question: "How quickly can a nurse come for injection at home?",
-        answer:
-          "Usually within 45 to 60 minutes of booking in major Delhi NCR areas.",
-      },
-      {
-        question: "What is the charge for injection at home?",
-        answer:
-          "Injection at home charges start from ₹299 per visit. Final charge depends on injection type and any additional services.",
-      },
-      {
-        question:
-          "Can I get daily injections at home for a course of antibiotics?",
-        answer:
-          "Yes. We offer daily injection packages for antibiotic courses and other multi-day treatment schedules at discounted rates.",
-      },
-    ],
-    howItWorks: [
-      "Call, WhatsApp, or Book Online",
-      "Share Symptoms and Location",
-      "Doctor & Nurse Assigned Instantly",
-      "Doctor & Nurse at Your Home in 15–30 Mins",
-    ],
-    whyChoose: [
-      {
-        icon: "shield",
-        title: "Verified Doctor & Nurse",
-        desc: "All our doctors & nurses are licensed, background-verified, and experienced in home health care services. ",
-      },
-      {
-        icon: "clock",
-        title: "15–30 Min Arrival",
-        desc: "Doctor & Nurse at your Home faster than it takes to reach a hospital and clinic in {city} rush.",
-      },
-      {
-        icon: "users",
-        title: "All Injection Types Covered",
-        desc: "IV, IM, subcutaneous, antibiotic, insulin and vitamin injections at home.",
-      },
-      {
-        icon: "star",
-        title: "Safe & Hygienic",
-        desc: "Proper hygiene and medical protocols followed for every injection at home.",
-      },
-      {
-        icon: "phone",
-        title: "Available 24/7",
-        desc: "Day, night, weekend — book injection at home in {city} anytime.",
-      },
-    ],
-    idealFor: [
-      "Patients who need regular injections",
-      "Elderly patients who find travel difficult",
-      "Post-surgery patients requiring follow-up injections",
-      "Working professionals with tight schedules",
-      "Patients needing IV fluids or medications at home",
-      "Anyone who prefers safe care at home",
-    ],
-    conditions: [
-      "IV injections and drips",
-      "IM (intramuscular) injections",
-      "Subcutaneous injections",
-      "Antibiotic injections",
-      "Vitamin injections",
-      "Insulin injections",
-      "Pain relief injections",
-      "Post-surgery prescribed injections",
-    ],
-  },
-
-  // ─────────────────────────────────────────────────────────────────────────
-  // 6. ELDERLY CARE AT HOME Done
+  // 5. ELDERLY CARE AT HOME Done
   // ─────────────────────────────────────────────────────────────────────────
   {
     slug: "elderly-care-at-home",
@@ -556,11 +446,11 @@ export const seoServices = [
     shortDesc:
       "Police-verified caregivers for senior citizens — 24/7 personalised support.",
     longDesc:
-      "QuickHomeDoctor provides dedicated and police-verified caregivers for elderly patients at home across Delhi NCR. Our trained attendants assist with daily activities, personal hygiene, medication reminders, mobility assistance, and companionship. Give your parents and elderly family members the professional care they deserve — in the comfort of their own home.",
+      "QuickHomeDoctor provides dedicated and police-verified caregivers for elderly patients at home across Delhi NCR. Our trained attendants assist with daily activities, personal hygiene, daily routine reminders, mobility assistance, and companionship. Give your parents and elderly family members the professional care they deserve — in the comfort of their own home.",
     benefits: [
       "Police-verified and reference-checked caregivers",
       "Personal hygiene and daily activity assistance",
-      "Medication reminders and schedule management",
+      "Daily routine and care schedule reminders",
       "Companionship and emotional support",
       "Mobility assistance and fall prevention",
       "Flexible 4-hour, 8-hour and 12-hour packages",
@@ -695,7 +585,7 @@ export const seoServices = [
       },
     
       {
-        question: "Do I need a doctor's prescription for ECG at home?",
+        question: "Do I need a doctor's referral for ECG at home?",
         answer:
           "In most cases, a doctor's recommendation is preferred, especially for diagnostic purposes.",
       },
@@ -745,7 +635,7 @@ export const seoServices = [
       },
       {
         icon: "phone",
-        title: "Written Prescription",
+        title: "Standard Reporting",
         desc: "Every ECG test is performed using standard equipment with proper reporting.",
       },
     ],
@@ -817,7 +707,7 @@ export const seoServices = [
           "Yes. Every phlebotomist is trained, certified, and background-verified before providing services.",
       },
       {
-        question: "Do I need a doctor’s prescription?",
+        question: "Do I need a doctor’s referral for a lab test at home?",
         answer:
           "In most cases, a doctor’s recommendation is preferred, especially for diagnostic purposes.",
       },
@@ -852,7 +742,7 @@ export const seoServices = [
       },
       {
         icon: "phone",
-        title: "Written Prescription",
+        title: "Standard Reporting",
         desc: "Every Lab test is performed using standard equipment with proper reporting",
       },
     ],
@@ -897,7 +787,7 @@ export const seoServices = [
       "BiPAP and CPAP machines",
       "Suction machines",
       "Patient monitors",
-      "Infusion and syringe pumps",
+      "Infusion and IV pumps",
       "Nebulizers",
     ],
     faqs: [
@@ -989,12 +879,12 @@ export const seoServices = [
     shortDesc:
       "24/7 trained home caretaker for post-surgery recovery and daily patient support.",
     longDesc:
-      "QuickHomeDoctor provides trained, police-verified caretakers and patient attendants for home care across Delhi NCR. Our caretakers assist patients during post-surgery recovery, illness, and long-term conditions. They help with personal hygiene, feeding, mobility, medication reminders, and round-the-clock monitoring. Flexible day duty, night duty and full-time live-in caretaker options available.",
+      "QuickHomeDoctor provides trained, police-verified caretakers and patient attendants for home care across Delhi NCR. Our caretakers assist patients during post-surgery recovery, illness, and long-term conditions. They help with personal hygiene, feeding, mobility, daily routine reminders, and round-the-clock monitoring. Flexible day duty, night duty and full-time live-in caretaker options available.",
     benefits: [
       "Police-verified and trained patient caretakers",
       "Post-surgery and post-hospitalisation recovery support",
       "Personal hygiene, feeding and mobility assistance",
-      "Medication reminders and schedule management",
+      "Daily routine and care schedule reminders",
       "Day duty, night duty and live-in caretaker options",
       "Affordable daily and monthly packages",
     ],
@@ -1005,7 +895,7 @@ export const seoServices = [
       "Mobility and walking assistance",
       "Feeding and daily routine support",
       "Post-hospitalization care",
-      "Medication reminders",
+      "Daily routine reminders",
       "Basic patient monitoring",
     ],
     faqs: [
@@ -1070,8 +960,8 @@ export const seoServices = [
       },
       {
         icon: "phone",
-        title: "Written Prescription",
-        desc: "Every visit ends with a proper prescription and follow-up guidance.",
+        title: "Clear Care Notes",
+        desc: "Every visit ends with clear care notes and follow-up guidance.",
       },
     ],
     idealFor: [
@@ -1102,7 +992,7 @@ export const seoServices = [
       "24/7 dedicated ICU-trained doctor and nurse team",
       "Ventilator, oxygen and BIPAP support",
       "Continuous cardiac and vitals monitoring",
-      "Infusion pump and IV medication management",
+      "Infusion pump and IV fluid monitoring",
       "30 to 50 percent cost saving vs hospital ICU",
     ],
     conditions: [
@@ -1110,7 +1000,7 @@ export const seoServices = [
       "Cardiac monitor setup",
       "Oxygen concentrator and cylinder support",
       "Suction machine setup",
-      "Infusion pumps and syringe pumps",
+      "Infusion pumps and IV pumps",
       "24/7 critical care nursing",
       "Doctor on-call support",
       "Emergency response coordination",

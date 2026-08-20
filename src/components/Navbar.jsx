@@ -39,7 +39,6 @@ export default function Navbar() {
         { name: "Nurse at Home", href: "/delhi/nurse-at-home" },
         { name: "Physiotherapy at Home", href: "/delhi/physiotherapy-at-home" },
         { name: "X-Ray at Home", href: "/delhi/xray-at-home" },
-        { name: "Injection at Home", href: "/delhi/injection-at-home" },
         { name: "Elderly Care at Home", href: "/delhi/elderly-care-at-home" },
         { name: "ECG at Home", href: "/delhi/ecg-at-home" },
         { name: "Lab Test at Home", href: "/delhi/lab-test-at-home" },

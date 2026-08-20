@@ -47,19 +47,6 @@ const services = [
     ),
   },
   {
-    label: "Injection at Home",
-    slug: "injection-at-home",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="m18 2 4 4-4 4" />
-        <path d="m14.5 7.5 5-5" />
-        <path d="M6 18 2 22" />
-        <path d="M13 14l5-5" />
-        <rect x="4" y="10" width="9" height="9" rx="1" transform="rotate(-45 4 10)" />
-      </svg>
-    ),
-  },
-  {
     label: "Elderly Care at Home",
     slug: "elderly-care-at-home",
     icon: (

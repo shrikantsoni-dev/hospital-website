@@ -56,6 +56,12 @@ const nextConfig = {
         permanent: true,
       },
       { source: "/inquiry", destination: "/contact-us", permanent: true },
+      // Injection at Home service retired — send the indexed URLs to nurse at home
+      {
+        source: "/:city(delhi|new-delhi|noida|gurgaon|ghaziabad)/injection-at-home",
+        destination: "/:city/nurse-at-home",
+        permanent: true,
+      },
       // Services redirects
       {
         source: "/services/home-care",
@@ -69,7 +75,7 @@ const nextConfig = {
       },
       {
         source: "/services/diagnostics",
-        destination: "/delhi/blood-test-at-home",
+        destination: "/delhi/lab-test-at-home",
         permanent: true,
       },
       {

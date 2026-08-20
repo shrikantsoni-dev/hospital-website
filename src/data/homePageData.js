@@ -1,4 +1,4 @@
-import { FaUserMd, FaSyringe, FaHeartbeat, FaFlask, FaBed } from "react-icons/fa";
+import { FaUserMd, FaHeartbeat, FaFlask } from "react-icons/fa";
 import { FaUserNurse, FaXRay, FaHandHoldingMedical } from "react-icons/fa";
 import { GiMedicalPack, GiHeartOrgan } from "react-icons/gi";
 import { MdElderlyWoman, MdAccessibility } from "react-icons/md";
@@ -35,14 +35,6 @@ export const services = [
     icon: FaXRay,
     iconColor: "text-purple-600",
     bg: "bg-purple-50",
-  },
-  {
-    slug: "injection-at-home",
-    name: "Injection at Home",
-    desc: "Safe IV/IM injections by trained staff",
-    icon: FaSyringe,
-    iconColor: "text-red-600",
-    bg: "bg-red-50",
   },
   {
     slug: "elderly-care-at-home",
@@ -221,8 +213,8 @@ export const cityFAQs = {
       a: "Services are available across Delhi, Noida, Gurgaon, Ghaziabad and nearby NCR regions. Call us to check exact coverage for your area.",
     },
     {
-      q: "Do doctors bring medicines during home visits?",
-      a: "Yes, doctors usually carry basic medicines so that treatment can begin immediately at home.",
+      q: "What does the doctor bring to a home visit?",
+      a: "Our doctors carry standard diagnostic equipment so that assessment and treatment advice can begin immediately at home.",
     },
     {
       q: "What health issues can be treated through a doctor home visit?",
@@ -249,7 +241,7 @@ export const cityFAQs = {
     },
     {
       q: "Can I get a nurse at home in Delhi?",
-      a: "Yes, we provide trained nurses for home care in Delhi — available for post-surgery care, wound dressing, injections and more.",
+      a: "Yes, we provide trained nurses for home care in Delhi — available for post-surgery care, wound dressing, vitals monitoring and more.",
     },
     {
       q: "What health conditions can be treated at home in Delhi?",
@@ -276,7 +268,7 @@ export const cityFAQs = {
     },
     {
       q: "Can I book a nurse for home care in Noida?",
-      a: "Yes, trained and certified nurses are available in Noida for post-surgery care, injections, dressing changes and elderly care.",
+      a: "Yes, trained and certified nurses are available in Noida for post-surgery care, dressing changes, vitals monitoring and elderly care.",
     },
     {
       q: "What medical services are available at home in Noida?",
@@ -356,8 +348,8 @@ export const cityFAQs = {
       a: "Charges depend on location, consultation type and urgency. Call us for transparent and accurate pricing.",
     },
     {
-      q: "Do doctors bring medicines during home visits in NCR?",
-      a: "Yes, our doctors carry basic medicines and equipment so treatment can begin immediately at your home.",
+      q: "What does the doctor bring to a home visit in NCR?",
+      a: "Our doctors carry standard diagnostic equipment so assessment and treatment advice can begin immediately at your home.",
     },
     {
       q: "What health issues can be treated at home in New Delhi?",

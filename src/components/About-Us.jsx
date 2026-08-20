@@ -20,9 +20,9 @@ export default function AboutSection() {
         "ICU-Level Care at Home",
         "Diagnostic Services (ECG, X-Ray, Blood Tests)",
         "Skilled Nursing Care",
-        "Injection & Medication Administration",
+        "Nursing & Home Care Support",
         "Ambulance Assistance",
-        "IV Drips & Fluids Management",
+        "Post-Surgery Recovery Support",
     ];
 
     const reviews = [

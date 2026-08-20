@@ -25,7 +25,7 @@ export const areaContent = {
             // Nurse at Home Service for {{area.name}}
             {
                 title: "Nurse at Home in {{area.name}}",
-                description: "Is there professional and skilled nursing care available in {{area.name}}? Our trained RN and APRN and background-verified nurses provide post-surgery care, wound dressing, IV administration, catheter care, and 12/24-hour attendant services. Female nurses are available on request just within 15 to 30 minutes."
+                description: "Is there professional and skilled nursing care available in {{area.name}}? Our trained RN and APRN and background-verified nurses provide post-surgery care, wound dressing, vitals monitoring, catheter care, and 12/24-hour attendant services. Female nurses are available on request just within 15 to 30 minutes."
             },
             // Physiotherapy at Home Service for {{area.name}}
             {
@@ -36,11 +36,6 @@ export const areaContent = {
             {
                 title: "Lab Tests at Home in {{area.name}}",
                 description: "Book blood tests, CBC, HbA1c, lipid profile, thyroid, Vitamin D and more from home in {{area.name}}. Trained phlebotomists, sterile equipment, NABL-certified labs. Digital reports within 24 hours."
-            },
-            // injection at home {{area.name}}
-            {
-                title: "Injection at Home in {{area.name}}",
-                description: "Avoid clinic and hospital visits just for an injection. Our nurses administer IM, IV, subcutaneous, and other injections safely at home in {{area.name}} using sterile single use equipment. Valid prescription required for injection at home"
             },
             // ECG at Home in {{area.name}}
             {
@@ -55,7 +50,7 @@ export const areaContent = {
             // Elderly Care at Home in {{area.name}}
             {
                 title: "Elderly Care at Home in {{area.name}}",
-                description: "Compassionate trained elderly caretakers in {{area.name}} for daily routine assistance, medication reminders, mobility support, and companionship. This service is perfect for working families are struggling in taking care of elderly parents."
+                description: "Compassionate trained elderly caretakers in {{area.name}} for daily routine assistance, care schedule reminders, mobility support, and companionship. This service is perfect for working families are struggling in taking care of elderly parents."
             },
             // Caretaker at Home in {{area.name}}
             {
@@ -96,8 +91,8 @@ export const areaContent = {
                 description: "Day, night, and weekend, we're always available just a phone call and inquiry away."
             },
             {
-                title: "Written Prescription",
-                description: "Every visit ends with a proper prescription and follow-up guidance."
+                title: "Clear Care Notes",
+                description: "Every visit ends with clear care notes and follow-up guidance."
             },
         ]
     },
@@ -126,7 +121,7 @@ export const areaContent = {
         },
         {
          question: "Do you provide nurse services at home in {{area.name}}?",
-         answer: "Yes. Trained and background-verified nurses serve {{area.name}} for post-surgery care, wound dressing, IV therapy, and 12/24-hour attendant services. Female nurses available on request."
+         answer: "Yes. Trained and background-verified nurses serve {{area.name}} for post-surgery care, wound dressing, vitals monitoring, and 12/24-hour attendant services. Female nurses available on request."
         },
         {
          question: "Which localities in {{area.name}} do you cover?",

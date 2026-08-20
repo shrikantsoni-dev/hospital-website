@@ -236,7 +236,7 @@ export default function BookAppointment({ city, areaName }) {
                   text: `Doctor arrives in ${city?.avgArrivalTime || "30–45 mins"}`,
                 },
                 { icon: "✓", text: "24/7 Availability" },
-                { icon: "✓", text: "Written prescription after every visit" },
+                { icon: "✓", text: "Written treatment plan after every visit" },
                 {
                   icon: "✓",
                   text: `40+ certified doctors & nurses in ${city?.name || "your city"}`,

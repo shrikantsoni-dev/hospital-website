@@ -74,7 +74,7 @@ export default function ServiceIntroSection({ city, service }) {
                   `Doctor reaches in ${city.avgArrivalTime ?? "15–30 mins"}`,
                   "No hospital queues or crowded OPDs",
                   "Certified MBBS & MD doctors",
-                  "Written prescription every visit",
+                  "Written treatment plan every visit",
                   "Available day, night & weekends",
                 ].map((point) => (
                   <li

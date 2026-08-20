@@ -7,7 +7,6 @@
 - Nurse at Home
 - Physiotherapy at Home
 - X-Ray at Home
-- Injection at Home
 - ECG at Home
 - Lab Test at Home
 - Caretaker at Home

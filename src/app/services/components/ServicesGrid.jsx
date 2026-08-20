@@ -8,7 +8,6 @@ import {
   FaHeartbeat,
   FaPhoneAlt,
   FaShieldAlt,
-  FaSyringe,
   FaUserMd,
   FaUserNurse,
   FaWhatsapp,
@@ -49,14 +48,6 @@ const services = [
     icon: FaXRay,
     iconColor: "text-purple-600",
     bg: "bg-purple-50",
-  },
-  {
-    slug: "injection-at-home",
-    name: "Injection at Home",
-    desc: "Safe IV/IM injections by trained staff",
-    icon: FaSyringe,
-    iconColor: "text-red-600",
-    bg: "bg-red-50",
   },
   {
     slug: "elderly-care-at-home",

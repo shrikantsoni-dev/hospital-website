@@ -35,7 +35,7 @@ export const seoCities = [
       {
         question: "What is the cost of a doctor home visit in Delhi?",
         answer:
-          "Our doctor home visit charges in Delhi start from ₹399. The final fee depends on the type of consultation, time of visit, and any additional services like IV drip, injection, or ECG. Pricing is transparent with no hidden charges.",
+          "Our doctor home visit charges in Delhi start from ₹399. The final fee depends on the type of consultation, time of visit, and any additional services like ECG or a lab test. Pricing is transparent with no hidden charges.",
       },
       {
         question: "Are the doctors qualified and verified in Delhi?",
@@ -90,7 +90,7 @@ export const seoCities = [
       {
         question: "What medical services can I get at home in New Delhi?",
         answer:
-          "Our home visit doctors in New Delhi offer general consultation, fever and infection treatment, IV drip administration, ECG at home, injection, wound dressing, post-surgery care, and elder care. Nursing services are also available.",
+          "Our home visit doctors in New Delhi offer general consultation, fever and infection treatment, ECG at home, lab tests, wound dressing, post-surgery care, and elder care. Nursing services are also available.",
       },
     ],
   },
@@ -128,9 +128,9 @@ export const seoCities = [
           "Absolutely. QuickHomeDoctor operates 24/7 including Sundays, public holidays and midnight. Fever, viral infections, body pain — our doctors handle all general and emergency conditions at your Gurgaon home.",
       },
       {
-        question: "Are IV drip and injection services available at home in Gurgaon?",
+        question: "What other home healthcare services are available in Gurgaon?",
         answer:
-          "Yes. In addition to general consultation, we offer IV drip at home, injection administration, wound dressing, ECG, blood sample collection and nursing care across all Gurgaon areas.",
+          "Yes. In addition to general consultation, we offer wound dressing, ECG, blood sample collection, physiotherapy and nursing care across all Gurgaon areas.",
       },
       {
         question: "What is the fee for doctor home visit in Gurgaon?",
@@ -175,7 +175,7 @@ export const seoCities = [
       {
         question: "Can I get blood test or ECG done at home in Ghaziabad?",
         answer:
-          "Yes. In addition to general consultation our home visit service in Ghaziabad includes blood sample collection, ECG at home, IV drip, injection, wound dressing and post-surgery nursing care.",
+          "Yes. In addition to general consultation our home visit service in Ghaziabad includes blood sample collection, ECG at home, wound dressing and post-surgery nursing care.",
       },
       {
         question: "What is the cost of doctor home visit in Ghaziabad?",

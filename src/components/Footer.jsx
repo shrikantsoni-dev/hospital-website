@@ -91,21 +91,20 @@ export default function Footer() {
 
                     <ul className="space-y-3 text-gray-700 text-sm">
                         {[
-                            "Doctor At Home",
-                            "Diagnostic Support",
-                            "Elderly Care Made Convenient",
-                            "Chronic Disease Management",
-                            "Injection At Home",
-                            "Nursing At Home",
-                            "Other Services"
-                        ].map((item, i) => (
+                            { label: "Doctor At Home", href: "/delhi/doctor-at-home" },
+                            { label: "Diagnostic Support", href: "/delhi/lab-test-at-home" },
+                            { label: "Elderly Care Made Convenient", href: "/delhi/elderly-care-at-home" },
+                            { label: "Chronic Disease Management", href: "/delhi/caretaker-at-home" },
+                            { label: "Nursing At Home", href: "/delhi/nurse-at-home" },
+                            { label: "Other Services", href: "/services" }
+                        ].map((item) => (
                             <Link
-                                key={i}
-                                href="/"
+                                key={item.href}
+                                href={item.href}
                                 className="flex items-center gap-2 hover:text-[#0f706b] transition cursor-pointer"
                             >
                                 <FiChevronRight size={16} />
-                                {item}
+                                {item.label}
                             </Link>
                         ))}
                     </ul>
